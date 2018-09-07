@@ -10,8 +10,13 @@ int menu();
 void Fichero(string);
 void Suma();
 void BancoRadicales();
+void abrirRadicales();
+void Resta();
+void Multiplicacion();
+void Division();
 
-vector<Radical* > radicales;
+
+vector<Radical *> radicales;
 
 int main(){
 char ejecucion = 'y';
@@ -24,7 +29,7 @@ do{
             break;
         }
         case 2:{
-        	
+        	Suma();
             
             break;
         }
@@ -35,7 +40,7 @@ do{
             break;
         }
         case 4:{
-       
+       		Resta();
 
         	break;
         }
@@ -45,7 +50,7 @@ do{
         	break;
         }
         case 6:{
-            
+            Multiplicacion();
 
             break;
         }
@@ -54,7 +59,7 @@ do{
             break;
         }
         case 8:{
-                     
+            Division();         
             
             break;
         }
@@ -118,7 +123,7 @@ void BancoRadicales(){
     radicales.push_back(temp);
 
     for (int i = 0; i < radicales.size(); i++){
-            cout << i << ") " << radicales[i] << endl;
+            cout << i << ") " << *radicales[i] << endl;
         }
 }
 
@@ -129,23 +134,23 @@ void Suma(){
     while (pos < 0 || pos >= radicales.size()){
 
         for (int i = 0; i < radicales.size(); i++){
-            cout << i << ") " << radicales[i] << endl;
+            cout << i << ") " << *radicales[i] << endl;
         }
         cout << "Elija el Radical 1: ";
         cin >> pos;
     }
     cout << endl;
 
-    Radical* radical = radicales[pos];
+    Radical *radical = radicales[pos];
 
-    cout << "-->Radical 1: " << radical << endl;
+    cout << "-->Radical 1: " << *radical << endl;
     pos = radicales.size() + 1;
 
     while (pos < 0 || pos >= radicales.size()){
 
         for (int i = 0; i < radicales.size(); i++)
         {
-            cout << i << ") " << radicales[i] << endl;
+            cout << i << ") " << *radicales[i] << endl;
         }
         cout << "Elija el Radical 2: ";
         cin >> pos;
@@ -155,18 +160,176 @@ void Suma(){
     Radical *radical2 = radicales[pos];
     cout << "-->Radical 2: " << *radical2 << endl;
     
-    /*const Radical *suma;
+    const Radical* suma;
     suma = *radical + *radical2;
     cout << "--->Suma: " << *suma << endl;
+    
     stringstream salida;
     salida << *radical << " + " << *radical2 << " = " << *suma;
-    string a = salida.str();*/
+    string f = salida.str();
+
+    Fichero(f);
 
 }
 
-void Fichero(string mkf){
-    string file = "ArchivoRadicales.txt";
+void Resta(){
+	int pos;
+    cout << "--->Resta<---" << endl;
+    pos = radicales.size() + 1;
+    while (pos < 0 || pos >= radicales.size()){
+
+        for (int i = 0; i < radicales.size(); i++){
+            cout << i << ") " << *radicales[i] << endl;
+        }
+        cout << "Elija el Radical 1: ";
+        cin >> pos;
+    }
+    cout << endl;
+
+    Radical *radical = radicales[pos];
+
+    cout << "-->Radical 1: " << *radical << endl;
+    pos = radicales.size() + 1;
+
+    while (pos < 0 || pos >= radicales.size()){
+
+        for (int i = 0; i < radicales.size(); i++)
+        {
+            cout << i << ") " << *radicales[i] << endl;
+        }
+        cout << "Elija el Radical 2: ";
+        cin >> pos;
+    }
+    cout << endl;
+    
+    Radical *radical2 = radicales[pos];
+    cout << "-->Radical 2: " << *radical2 << endl;
+    
+    const Radical* resta;
+    resta = *radical2 - *radical;
+    cout << "--->Resta: " << *resta << endl;
+    
+    stringstream salida;
+    salida << *radical << " - " << *radical2 << " = " << *resta;
+    string f = salida.str();
+
+    Fichero(f);
+}
+
+void Multiplicacion(){
+	int pos;
+    cout << "--->Multiplicacion<---" << endl;
+    pos = radicales.size() + 1;
+    while (pos < 0 || pos >= radicales.size()){
+
+        for (int i = 0; i < radicales.size(); i++){
+            cout << i << ") " << *radicales[i] << endl;
+        }
+        cout << "Elija el Radical 1: ";
+        cin >> pos;
+    }
+    cout << endl;
+
+    Radical *radical = radicales[pos];
+
+    cout << "-->Radical 1: " << *radical << endl;
+    pos = radicales.size() + 1;
+
+    while (pos < 0 || pos >= radicales.size()){
+
+        for (int i = 0; i < radicales.size(); i++)
+        {
+            cout << i << ") " << *radicales[i] << endl;
+        }
+        cout << "Elija el Radical 2: ";
+        cin >> pos;
+    }
+    cout << endl;
+    
+    Radical *radical2 = radicales[pos];
+    cout << "-->Radical 2: " << *radical2 << endl;
+    
+    const Radical* multi;
+    multi = *radical * *radical2;
+    cout << "--->Multiplicacion: " << *multi << endl;
+    
+    stringstream salida;
+    salida << *radical << " * " << *radical2 << " = " << *multi;
+    string f = salida.str();
+
+    Fichero(f);
+}
+
+void Division(){
+	int pos;
+    cout << "--->Division<---" << endl;
+    pos = radicales.size() + 1;
+    while (pos < 0 || pos >= radicales.size()){
+
+        for (int i = 0; i < radicales.size(); i++){
+            cout << i << ") " << *radicales[i] << endl;
+        }
+        cout << "Elija el Radical 1: ";
+        cin >> pos;
+    }
+    cout << endl;
+
+    Radical *radical = radicales[pos];
+
+    cout << "-->Radical 1: " << *radical << endl;
+    pos = radicales.size() + 1;
+
+    while (pos < 0 || pos >= radicales.size()){
+
+        for (int i = 0; i < radicales.size(); i++)
+        {
+            cout << i << ") " << *radicales[i] << endl;
+        }
+        cout << "Elija el Radical 2: ";
+        cin >> pos;
+    }
+    cout << endl;
+    
+    Radical *radical2 = radicales[pos];
+    cout << "-->Radical 2: " << *radical2 << endl;
+    
+    const Radical* divi;
+    divi = *radical2 / *radical;
+    cout << "--->Division: " << *divi << endl;
+    
+    stringstream salida;
+    salida << *radical << " / " << *radical2 << " = " << *divi;
+    string f = salida.str();
+
+    Fichero(f);
+}
+
+void abrirRadicales()
+{
+    ifstream archivo("Log.txt");
+    if (archivo.is_open())
+    {
+        while (!archivo.eof())
+        {
+            string linea;
+            getline(archivo, linea);
+            if (linea.size() < 1)
+            {
+                break;
+            }
+            //log.push_back(linea);
+        }
+        archivo.close();
+    }
+}
+
+void Fichero(string linea){
+
+    string file = "Log.txt";
     ofstream ficheroSalida(file.c_str(), ios::app);
-    ficheroSalida << mkf;
+    if(ficheroSalida.is_open()){
+    ficheroSalida << linea;
     ficheroSalida << "\n";
+	ficheroSalida.close();
+	}
 } 

@@ -24,6 +24,7 @@ class Radical{
 		~Radical();
 
 		friend ostream& operator<<(ostream&, Radical&);
+		friend ostream& operator<<(ostream&, const Radical&);
 
   	//Metodos de sobrecarga
   	const Radical* operator+( Radical&);
@@ -31,10 +32,10 @@ class Radical{
   	const Radical* operator*( Radical&);
   	const Radical* operator/( Radical&);
 
-  	const Radical* operator+=( Radical&);
+  	/*const Radical* operator+=( Radical&);
   	const Radical* operator-=( Radical&);
   	const Radical* operator*=( Radical&);
-  	const Radical* operator/=( Radical&);
+  	const Radical* operator/=( Radical&);*/
 
   	/*const Radical* operator++( Radical&);
   	const Radical* operator--( Radical&);

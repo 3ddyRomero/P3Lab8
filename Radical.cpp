@@ -39,6 +39,13 @@ void Radical::setRadicando(int pRadicando){
 
 ostream &operator<<(ostream& os, Radical& radical){
     os <<  radical.Coeficiente <<"("<<radical.Indice<<"√"<<radical.Radicando<<")" ;
+
+    return os;
+}
+
+ostream &operator<<(ostream& os, const Radical& radical){
+    os <<  radical.Coeficiente <<"("<<radical.Indice<<"√"<<radical.Radicando<<")" ;
+    
     return os;
 }
 
@@ -76,6 +83,19 @@ const Radical* Radical::operator*(Radical& multi){
 	if(Radicando == multi.getRadicando() && Indice == multi.getIndice()){
 
 		NCoeficiente = multi.getCoeficiente() * Coeficiente;
+		radical = new Radical(NCoeficiente,Indice,Radicando);
+	}else {
+		cout<<"No se puede realizar esta Operacion."<<endl;
+	}
+	return radical;
+}
+
+const Radical* Radical::operator/(Radical& divi){
+	int NCoeficiente;
+	Radical* radical;
+	if(Radicando == divi.getRadicando() && Indice == divi.getIndice()){
+
+		NCoeficiente = divi.getCoeficiente() / Coeficiente;
 		radical = new Radical(NCoeficiente,Indice,Radicando);
 	}else {
 		cout<<"No se puede realizar esta Operacion."<<endl;
