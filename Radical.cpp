@@ -1,4 +1,5 @@
 #include "Radical.h"
+#include <math.h>
 
 using namespace std;
 
@@ -37,31 +38,48 @@ void Radical::setRadicando(int pRadicando){
 }
 
 ostream &operator<<(ostream& os, Radical& radical){
-    os <<  radical.Coeficiente <<"("<<radical.Indice<<"√"<<radical.Radicando ;
+    os <<  radical.Coeficiente <<"("<<radical.Indice<<"√"<<radical.Radicando<<")" ;
     return os;
 }
 
-const Radical *Radical::*operator+(Radical& suma){
-	if(pRadicando == suma.getRadicando() && pIndice == suma.getIndice()){
+const Radical* Radical::operator+(Radical& suma){
+	int NCoeficiente;
+	Radical* radical;
+	if(Radicando == suma.getRadicando() && Indice == suma.getIndice()){
 
-		int NCoeficiente = suma.getCoeficiente()+ pCoeficiente;
-		int NIndice = (1/suma.getIndice());
-		int NRadicando = pow(suma.getRadicando(),NIndice);
-
-    
-    Radical *radical = new Radical(NCoeficiente,NIndice,NRadicando);
-	
+		NCoeficiente = suma.getCoeficiente() + Coeficiente;
+		radical = new Radical(NCoeficiente,Indice,Radicando);
+	}else {
+		cout<<"No se puede realizar esta Operacion."<<endl;
 	}
+
 	return radical;
 }
 
-const Radical *Radical::*operator-(Radical& resta){
-	int NCoeficiente = suma.getCoeficiente();
-	int NIndice = (1/suma.getIndice());
-	int NRadicando = pow(suma.getRadicando(),NIndice);
-    
-    Radical *radical = new Radical(NCoeficiente,NIndice,NRadicando);
+const Radical* Radical::operator-(Radical& resta){
+	int NCoeficiente;
+	Radical* radical;
+	if(Radicando == resta.getRadicando() && Indice == resta.getIndice()){
 
+		NCoeficiente = resta.getCoeficiente() - Coeficiente;
+		radical = new Radical(NCoeficiente,Indice,Radicando);
+	}else {
+		cout<<"No se puede realizar esta Operacion."<<endl;
+	}
+
+	return radical;
+}
+
+const Radical* Radical::operator*(Radical& multi){
+	int NCoeficiente;
+	Radical* radical;
+	if(Radicando == multi.getRadicando() && Indice == multi.getIndice()){
+
+		NCoeficiente = multi.getCoeficiente() * Coeficiente;
+		radical = new Radical(NCoeficiente,Indice,Radicando);
+	}else {
+		cout<<"No se puede realizar esta Operacion."<<endl;
+	}
 	return radical;
 }
 

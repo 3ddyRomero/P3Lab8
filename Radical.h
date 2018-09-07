@@ -7,7 +7,7 @@ using namespace std;
 
 class Radical{
 	private:
-		int coeficiente, indice , radicando;
+		int Coeficiente, Indice , Radicando;
 	public:
 		Radical();
 		Radical(int,int,int);
@@ -26,9 +26,20 @@ class Radical{
 		friend ostream& operator<<(ostream&, Radical&);
 
   	//Metodos de sobrecarga
-  	const Radical *operator+( Radical &) ;
-  	const Radical *operator-( Radical &) ;
-  	const Radical *operator*( Radical &) ;
-  	const Radical *operator/( Radical &) ;
+  	const Radical* operator+( Radical&);
+  	const Radical* operator-( Radical&);
+  	const Radical* operator*( Radical&);
+  	const Radical* operator/( Radical&);
+
+  	const Radical* operator+=( Radical&);
+  	const Radical* operator-=( Radical&);
+  	const Radical* operator*=( Radical&);
+  	const Radical* operator/=( Radical&);
+
+  	/*const Radical* operator++( Radical&);
+  	const Radical* operator--( Radical&);
+  	const Radical* operator<<( Radical&);
+  	const Radical* operator>>( Radical&);*/
+
 };
 #endif
