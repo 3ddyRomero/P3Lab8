@@ -63,6 +63,21 @@ const Radical* Radical::operator+(Radical& suma){
 	return radical;
 }
 
+/*const Radical* Radical::operator+=(Radical& sumae){
+	int NCoeficiente;
+	int ntero
+	Radical* radical;
+	if(Radicando == suma.getRadicando() && Indice == suma.getIndice()){
+
+		NCoeficiente = suma.getCoeficiente() + ntero;
+		radical = new Radical(NCoeficiente,Indice,Radicando);
+	}else {
+		cout<<"No se puede realizar esta Operacion."<<endl;
+	}
+
+	return radical;
+}*/
+
 const Radical* Radical::operator-(Radical& resta){
 	int NCoeficiente;
 	Radical* radical;

@@ -9,6 +9,10 @@ using namespace std;
 int menu();
 void Fichero(string);
 void Suma();
+void SumaEnteroDecimal();
+void RestaEnteroDecimal();
+void MultiplicacionEnteroDecimal();
+void DivisionEnteroDecimal();
 void BancoRadicales();
 void abrirRadicales();
 void Resta();
@@ -34,7 +38,7 @@ do{
             break;
         }
         case 3:{
-        	
+        	SumaEnteroDecimal();
 
                         
             break;
@@ -45,7 +49,7 @@ do{
         	break;
         }
         case 5:{
-          
+          	RestaEnteroDecimal();
 
         	break;
         }
@@ -55,6 +59,7 @@ do{
             break;
         }
         case 7:{
+        	MultiplicacionEnteroDecimal();
             
             break;
         }
@@ -64,7 +69,7 @@ do{
             break;
         }
         case 9:{
-            
+            DivisionEnteroDecimal();
 
             break;
         }
@@ -172,6 +177,58 @@ void Suma(){
 
 }
 
+void SumaEnteroDecimal(){
+	int pos;
+	int entero;
+
+    cout << "--->Suma Entero<---" << endl;
+    pos = radicales.size() + 1;
+    while (pos < 0 || pos >= radicales.size()){
+
+        for (int i = 0; i < radicales.size(); i++){
+            cout << i << ") " << *radicales[i] << endl;
+        }
+        cout << "Elija el Radical 1: ";
+        cin >> pos;
+    }
+    cout << endl;
+
+    Radical *radical = radicales[pos];
+
+    cout << "-->Radical 1: " << *radical << endl;
+    pos = radicales.size() + 1;
+
+
+    cout<<"Ingrese el Valor entero: "<<endl; 
+    int coeficiente, indice, radicando;
+    
+    cout << "Ingrese el Coeficiente: ";
+    cin >> coeficiente;
+    
+    cout << "Ingrese el Indice: ";
+    cin >> indice;
+
+    cout << "Ingrese el Radicando: ";
+    cin >> radicando;
+
+    cout << endl;
+
+    Radical* temp = new Radical(coeficiente,indice,radicando);
+    cout << "-->Radical 2: " << *temp << endl;
+    //radicales.push_back(temp);
+
+    const Radical* suma;
+    suma = *radical + *temp;
+    cout << "--->Suma: " << *suma<< endl;
+    
+    stringstream salida;
+    salida << *radical << " + " << *temp << " = " << *suma;
+    string f = salida.str();
+
+    Fichero(f);
+
+}
+
 void Resta(){
 	int pos;
     cout << "--->Resta<---" << endl;
@@ -211,6 +268,53 @@ void Resta(){
     
     stringstream salida;
     salida << *radical << " - " << *radical2 << " = " << *resta;
+    string f = salida.str();
+
+    Fichero(f);
+}
+
+void RestaEnteroDecimal(){
+	int pos;
+    cout << "--->Resta<---" << endl;
+    pos = radicales.size() + 1;
+    while (pos < 0 || pos >= radicales.size()){
+
+        for (int i = 0; i < radicales.size(); i++){
+            cout << i << ") " << *radicales[i] << endl;
+        }
+        cout << "Elija el Radical 1: ";
+        cin >> pos;
+    }
+    cout << endl;
+
+    Radical *radical = radicales[pos];
+
+    cout << "-->Radical 1: " << *radical << endl;
+    pos = radicales.size() + 1;
+
+    cout<<"Ingrese el Valor entero: "<<endl; 
+    int coeficiente, indice, radicando;
+    
+    cout << "Ingrese el Coeficiente: ";
+    cin >> coeficiente;
+    
+    cout << "Ingrese el Indice: ";
+    cin >> indice;
+
+    cout << "Ingrese el Radicando: ";
+    cin >> radicando;
+
+    cout << endl;
+
+    Radical* temp = new Radical(coeficiente,indice,radicando);
+    cout << "-->Radical 2: " << *temp << endl;
+    
+    const Radical* resta;
+    resta = *temp - *radical;
+    cout << "--->Resta: " << *resta << endl;
+    
+    stringstream salida;
+    salida << *radical << " - " << *temp << " = " << *resta;
     string f = salida.str();
 
     Fichero(f);
@@ -260,6 +364,54 @@ void Multiplicacion(){
     Fichero(f);
 }
 
+void MultiplicacionEnteroDecimal(){
+	int pos;
+    cout << "--->Multiplicacion<---" << endl;
+    pos = radicales.size() + 1;
+    while (pos < 0 || pos >= radicales.size()){
+
+        for (int i = 0; i < radicales.size(); i++){
+            cout << i << ") " << *radicales[i] << endl;
+        }
+        cout << "Elija el Radical 1: ";
+        cin >> pos;
+    }
+    cout << endl;
+
+    Radical *radical = radicales[pos];
+
+    cout << "-->Radical 1: " << *radical << endl;
+    pos = radicales.size() + 1;
+
+    cout<<"Ingrese el Valor entero: "<<endl; 
+    int coeficiente, indice, radicando;
+    
+    cout << "Ingrese el Coeficiente: ";
+    cin >> coeficiente;
+    
+    cout << "Ingrese el Indice: ";
+    cin >> indice;
+
+    cout << "Ingrese el Radicando: ";
+    cin >> radicando;
+
+    cout << endl;
+
+    Radical* temp = new Radical(coeficiente,indice,radicando);
+
+    cout << "-->Radical 2: " << *temp << endl;
+    
+    const Radical* multi;
+    multi = *radical * *temp;
+    cout << "--->Multiplicacion: " << *multi << endl;
+    
+    stringstream salida;
+    salida << *radical << " * " << *temp << " = " << *multi;
+    string f = salida.str();
+
+    Fichero(f);
+}
+
 void Division(){
 	int pos;
     cout << "--->Division<---" << endl;
@@ -299,6 +451,53 @@ void Division(){
     
     stringstream salida;
     salida << *radical << " / " << *radical2 << " = " << *divi;
+    string f = salida.str();
+
+    Fichero(f);
+}
+
+void DivisionEnteroDecimal(){
+	int pos;
+    cout << "--->Division<---" << endl;
+    pos = radicales.size() + 1;
+    while (pos < 0 || pos >= radicales.size()){
+
+        for (int i = 0; i < radicales.size(); i++){
+            cout << i << ") " << *radicales[i] << endl;
+        }
+        cout << "Elija el Radical 1: ";
+        cin >> pos;
+    }
+    cout << endl;
+
+    Radical *radical = radicales[pos];
+
+    cout << "-->Radical 1: " << *radical << endl;
+    pos = radicales.size() + 1;
+
+    cout<<"Ingrese el Valor entero: "<<endl; 
+    int coeficiente, indice, radicando;
+    
+    cout << "Ingrese el Coeficiente: ";
+    cin >> coeficiente;
+    
+    cout << "Ingrese el Indice: ";
+    cin >> indice;
+
+    cout << "Ingrese el Radicando: ";
+    cin >> radicando;
+
+    cout << endl;
+
+    Radical* temp = new Radical(coeficiente,indice,radicando);
+    cout << "-->Radical 2: " << *temp << endl;
+    
+    const Radical* divi;
+    divi = *temp / *radical;
+    cout << "--->Division: " << *divi << endl;
+    
+    stringstream salida;
+    salida << *radical << " / " << *temp << " = " << *divi;
     string f = salida.str();
 
     Fichero(f);
